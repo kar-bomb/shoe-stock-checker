@@ -14,9 +14,9 @@ and pushes a phone notification every time a check finds it in stock.
   endpoint every **2 minutes**.
 - On every check where the shoe is available, it POSTs to **https://ntfy.sh/mayada-shoes**
   with an urgent-priority notification and a tap-to-buy link.
-- At the start of each 6-hour cycle it sends one silent (min-priority) heartbeat so you
-  can tell the checker is alive. If ~an hour of consecutive checks fail (bot-blocked),
-  it sends a single warning per cycle.
+- It stays silent unless the shoe is in stock. The one exception: if ~an hour of
+  consecutive checks fail (bot-blocked), it sends a single warning per cycle so it
+  never fails silently.
 
 ## Subscribe to notifications
 

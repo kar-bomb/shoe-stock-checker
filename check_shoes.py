@@ -102,10 +102,6 @@ def main():
     blocked_alert_sent = False
 
     log(f"starting run: checking {BUY_URL} every {CHECK_INTERVAL}s")
-    notify("Shoe checker cycle started",
-           "Watching Kinetic Aura Slingback — Black/Sea Salt, size 9. "
-           "You'll get a notification on every check where it's in stock.",
-           priority="min", tags="eyes")
     warm_up()
 
     while time.monotonic() < deadline:
