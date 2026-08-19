@@ -1,0 +1,23 @@
+name: Shoe stock checker
+
+on:
+  schedule:
+    # Every 6 hours (UTC). Each new run cancels the previous one via the
+    # concurrency group below, then loops for ~5h45m checking every 2 minutes.
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+
+concurrency:
+  group: shoe-stock-checker
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check stock every 2 minutes
+        run: python3 check_shoes.py
